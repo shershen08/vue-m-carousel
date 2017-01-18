@@ -120,5 +120,11 @@ export default {
           <td>false</td>
           <td>取消touchmove事件的默认动作</td>
         </tr>
+        <tr>
+          <td>showPrevNext</td>
+          <td>Boolean</td>
+          <td>false</td>
+          <td></td>
+        </tr>
     </tbody>
 </table>

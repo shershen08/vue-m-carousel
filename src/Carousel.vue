@@ -1,5 +1,9 @@
 <template>
     <div class="carousel" :style="style" @touchstart="onTouchstart" @touchmove="onTouchmove" @touchend="onTouchend" @touchcancel="onTouchcancel">
+         <div class="carousel-arrows" v-if="showPrevNext">
+            <div class="carousel-prev-link" @click="transitionTo(--activeIndex)">&laquo;</div>
+            <div class="carousel-next-link" @click="transitionTo(++activeIndex)">&raquo;</div>
+        </div>
         <div class="carousel-track" :style="trackStyle">
             {{{addonBefore}}}
             <slot></slot>
@@ -8,6 +12,7 @@
         <div class="carousel-indicators" v-if="indicators">
             <div :class="{'carousel-dot':true,'active':index==activeIndex}" v-for="(index, item) in list" @click="transitionTo(index)">{{index}}</div>
         </div>
+        
     </div>
 </template>
 <script>
@@ -29,6 +34,10 @@ export default {
         responsive: {
             type: Number,
             default: 40
+        },
+        showPrevNext: {
+            type: Boolean,
+            default: false
         },
         flickThreshold: {
             type: Number,
@@ -237,6 +246,25 @@ export default {
     width: 100%;
     overflow: hidden;
     position: relative;
+    
+    &-arrows {
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        z-index: 1000;
+
+        .carousel-prev-link {
+            float: left;
+            cursor:pointer;
+            padding:10px;
+        }
+        .carousel-next-link {
+            float: right;
+            cursor:pointer;
+            padding:10px;
+        }
+    }
+ 
     &-track {
         height: 100%;
         display: flex;

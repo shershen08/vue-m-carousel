@@ -1,11 +1,11 @@
 <template>
     <div id="app">
-        <carousel :indicators="true" :on-slid-end="slidEnd" :auto="auto">
+        <carousel :indicators="true" :on-slid-end="slidEnd" :show-prev-next="true" :auto="auto" >
             <carousel-item @click="log(0)">carousel-item-0</carousel-item>
             <carousel-item @click="log(1)">carousel-item-1</carousel-item>
             <carousel-item @click="log(2)">carousel-item-2</carousel-item>
         </carousel>
-
+        
         <carousel :indicators="true" :on-slid-end="slidEnd" :auto="auto">
             <carousel-item @click="log(0)">carousel-item-0</carousel-item>
         </carousel>
